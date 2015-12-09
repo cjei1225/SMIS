@@ -12,12 +12,13 @@ class class_model extends CI_Model
 	}
 
 	//Class
-	function add_class($name, $description, $user_id)
+	function add_class($name, $description, $user_id, $year_level)
 	{
 		$data = array(
 		'name' => $name,
 		'description' => $description,
 		'user_id' => $user_id,
+		'year_level' => $year_level
 		);
 
 		$this->db->insert('class', $data);
@@ -47,12 +48,13 @@ class class_model extends CI_Model
 	}
 
 
-	function update_class($class_id, $name, $description, $user_id)
+	function update_class($class_id, $name, $description, $user_id, $year_level)
 	{
 		$data = array(
 		'name' => $name,
 		'description' => $description,
 		'user_id' => $user_id,
+		'year_level' => $year_level
 		);
 
 		$this->db->set($data);
@@ -68,5 +70,40 @@ class class_model extends CI_Model
 		$this->db->delete('class');
 
 		return TRUE;
+	}
+
+	function get_all_classrooms()
+	{
+		$this->db->select('*');
+		$this->db->from('class_room');
+
+		$query = $this->db->query();
+
+		return $query->result();
+	}
+
+	function create_classroom($year_level, $section, $capacity)
+	{
+		$data = array(
+			'year_level' => $year_level,
+			'section' => $section,
+			'capacity' => $capacity);
+
+		$this->db->insert('classroom', $data);
+
+		return TRUE;
+	}
+
+	function edit_classroom($year_level, $section, $capacity, $classroom_id)
+	{
+		$data = array(
+			'year_level' => $year_level,
+			'section' => $section,
+			'capacity' => $capacity);
+			$this->db->set($data);
+			$this->db->where('classroom_id', $classroom_id);
+			$this->db->update('classroom');
+
+			return TRUE;
 	}
 }

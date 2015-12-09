@@ -15,19 +15,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="container" >
     <table class="table table-hover table-bordered table-responsive">
         <thead>
-            <td>Class ID</td>
+            
             <td>Name</td>
             <td>Description</td>
-            <td>Employee</td>
+            <td>Year level</td>
+            <td>Adviser</td>
             <td>Actions</td>
         </thead>
         <tbody>
             <?php foreach($class as $class)
                 {?>
                 <tr>
-                <td><?php echo $class->class_id; ?></td>
+               
                 <td><?php echo $class->name; ?></td>
                 <td><?php echo $class->description; ?></td>
+                <td><?php echo $class->year_level; ?></td>
                 <td><?php echo $class->first_name." ".$class->last_name; ?></td>
                 <td>
                     <form method='post' action='edit_class'>

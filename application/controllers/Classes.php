@@ -31,21 +31,23 @@ class Classes extends CI_Controller {
 	public function Home()
 	{
 		$data['class'] = $this->class_model->get_all_class();
-		$this->load->view('class', $data);
+		//$data['classrooms'] = $this->class_model->get_all_classroom();
+		$this->load->view('class/class', $data);
 	}
 
 	public function add_class()
 	{
 		$data['class'] = $this->user->get_users();
-		$this->load->view('add_class', $data);
+		$this->load->view('class/add_class', $data);
 	}
 
 	public function submit_class()
-	{
+	{ 
 		$this->class_model->add_class(
 			$this->input->post('name'),
 			$this->input->post('description'),
-			$this->input->post('user_id'));
+			$this->input->post('user_id'),
+			$this->input->post('year_level'));
 
 		$this->Home();
 	}
@@ -54,7 +56,7 @@ class Classes extends CI_Controller {
 	{
 		$data['class'] = $this->class_model->get_class_by_id($this->input->post('class_id'));
 		$data['users'] = $this->user->get_users();
-		$this->load->view('edit_class', $data);
+		$this->load->view('class/edit_class', $data);
 	}
 
 	public function update_class()
@@ -72,5 +74,17 @@ class Classes extends CI_Controller {
 	{
 		$this->class_model->delete_class($this->input->post('class_id'));
 		$this->Home();
+	}
+
+	public function student_class()
+	{
+		$this->class_model->add_student_class($this->input->post('student_id'));
+	}
+
+	public function create_classroom()
+	{
+		$this->class_model->create_classroom($this->input->post('year_level'),
+			$this->input->post('section'),
+			$this->input->post('capacity'));
 	}
 }
