@@ -38,7 +38,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<input type='hidden' name='user_id' value='<?php echo $user->user_id; ?>' />
 						<button type='submit'> Edit </button>
 					</form>
-
 					<form method='post' action='delete_user'>
 						<input type='hidden' name='user_id' value='<?php echo $user->user_id; ?>' />
 						<button type='submit'> Delete </button>
@@ -63,7 +62,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php foreach($fee as $fee)
 				{?>
 				<tr>
-				<td><?php echo $fee->year_level; ?></td>
+				<td><?php if ($fee->year_level == 1){$year = 'Grade 1';} 
+					elseif ($fee->year_level == 2){$year = 'Grade 2';} 
+					elseif ($fee->year_level == 3){$year = 'Grade 3';} 
+					elseif ($fee->year_level == 4){$year = 'Grade 4';} 
+					elseif ($fee->year_level == 5){$year = 'Grade 5';} 
+					elseif ($fee->year_level == 6){$year = 'Grade 6';} 
+					elseif ($fee->year_level == 7){$year = 'Grade 7';} 
+					elseif ($fee->year_level == 8){$year = 'High School 1';} 
+					elseif ($fee->year_level == 9){$year = 'High School 2';} 
+					elseif ($fee->year_level == 10){$year = 'High School 3';} 
+					elseif ($fee->year_level == 11){$year = 'High School 4';} 
+					elseif ($fee->year_level == 12){$year = 'High School 5';} 
+					echo $year; ?></td>
 				<td><?php echo $fee->fee; ?></td>
 				</tr>
 			
