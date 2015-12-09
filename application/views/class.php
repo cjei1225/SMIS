@@ -3,56 +3,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Add Class</title>
+    <meta charset="utf-8">
+    <title>Class List</title>
 </head>
 <body>
 
-<div class="container">
-	<div class="row">
-		<div class="col-lg-4">
-        </div>
-        <div class="col-lg-6">
-        	<form method="post" action="index.php/Classes/add_class">
-                    <fieldset>
-                        <legend>Add Class</legend>
-                        <div class="form-group">
-                            <label for="inputcname" class="col-lg-2 control-label">Class Name</label>
+<form method='post' action='add_class'>
+    <button type="submit"> Add Class </button>
+</button>
+</form>
+<div id="container" >
+    <table class="table table-hover table-bordered table-responsive">
+        <thead>
+            <td>Class ID</td>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Employee</td>
+            <td>Actions</td>
+        </thead>
+        <tbody>
+            <?php foreach($class as $class)
+                {?>
+                <tr>
+                <td><?php echo $class->class_id; ?></td>
+                <td><?php echo $class->name; ?></td>
+                <td><?php echo $class->description; ?></td>
+                <td><?php echo $class->first_name." ".$class->last_name; ?></td>
+                <td>
+                    <form method='post' action='edit_class'>
+                        <input type='hidden' name='class_id' value='<?php echo $class->class_id; ?>' />
+                        <button type='submit'> Edit </button>
+                    </form>
 
-                            <div class="col-lg-10">
-                                <input class="form-control" id="inputcname" placeholder="Name" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputdescription" class="col-lg-2 control-label">Description</label>
+                    <form method='post' action='delete_class'>
+                        <input type='hidden' name='class_id' value='<?php echo $class->class_id; ?>' />
+                        <button type='submit'> Delete </button>
+                    </form>
+                </td>
+                </tr>
+            
+            <?php }?>
+        </tbody>
+    </table>
 
-                            <div class="col-lg-10">
-                                <input class="form-control" id="inputdescription" placeholder="Description" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputemployee" class="col-lg-2 control-label">Employee</label>
-
-                            <select class="form-control" id="inputemployee">
-                                <option selected="selected">1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-        </div>
-        <div class="col-lg-4">
-        </div>
-	
 </div>
 
 </body>

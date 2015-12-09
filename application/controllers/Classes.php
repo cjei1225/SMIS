@@ -18,19 +18,59 @@ class Classes extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	function __construct()
+	{
+		parent::__construct();
+
+		$this->load->helper(array('form', 'url', 'download'));
+		$this->load->model('class_model');
+		$this->load->model('user');
+		$this->load->database();
+	}
+
 	public function Home()
 	{
-		$this->load->view('class');
+		$data['class'] = $this->class_model->get_all_class();
+		$this->load->view('class', $data);
 	}
 
 	public function add_class()
 	{
-		if ($this->form_validation->run()) 
-			{								// validation ok
-				if (!is_null($data = $this->tank_auth->add_class($this->input->post('client_id'),
-					$this->input->post('client_id'),
-					$this->input->post('client_id'))))
-		$this->load->view('class');
+		$data['class'] = $this->user->get_users();
+		$this->load->view('add_class', $data);
 	}
-}
+
+	public function submit_class()
+	{
+		$this->class_model->add_class(
+			$this->input->post('name'),
+			$this->input->post('description'),
+			$this->input->post('user_id'));
+
+		$this->Home();
+	}
+
+	public function edit_class()
+	{
+		$data['class'] = $this->class_model->get_class_by_id($this->input->post('class_id'));
+		$data['users'] = $this->user->get_users();
+		$this->load->view('edit_class', $data);
+	}
+
+	public function update_class()
+	{
+		$this->class_model->update_class(
+			$this->input->post('class_id'),
+			$this->input->post('name'),
+			$this->input->post('description'),
+			$this->input->post('user_id'));
+
+		$this->Home();
+	}
+
+	public function delete_class()
+	{
+		$this->class_model->delete_class($this->input->post('class_id'));
+		$this->Home();
+	}
 }
