@@ -31,12 +31,12 @@ class Users extends CI_Controller {
 	public function Home()
 	{
 		$data['user'] = $this->user->get_users();
-		$this->load->view('Users_list', $data);
+		$this->load->view('users/Users_list', $data);
 	}
 
 	public function create_user()
 	{
-		$this->load->view('create_user');
+		$this->load->view('users/create_user');
 	}
 
 	public function submit_user()
@@ -62,7 +62,7 @@ class Users extends CI_Controller {
 		$data['user_details'] = $this->user->get_user_by_id($this->input->post('user_id'));
 
 		//print_r($data['user_details']);
-		$this->load->view('edit_user', $data);
+		$this->load->view('users/edit_user', $data);
 	}
 
 	public function submit_edits()
