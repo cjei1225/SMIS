@@ -88,6 +88,27 @@ class user extends CI_Model
 
 		return TRUE;
 	}
+
+	function add_tuition($year_level, $fee)
+	{
+		$data = array(
+		'year_level' => $year_level,
+		'fee' => $fee
+		);
+
+		$this->db->insert('tuition_fee', $data);
+
+		return TRUE;
+	}
+
+	function get_fee()
+	{
+		$this->db->select('*');
+		$this->db->from('tuition_fee');
+		$query = $this->db->get();
+
+		return $query->result();
+	}
 }
 
 /* End of file users.php */

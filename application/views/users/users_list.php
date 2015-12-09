@@ -49,6 +49,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php }?>
 		</tbody>
 	</table>
+	<br>
+	<form method='post' action='tuition'>
+	<button type="submit"> Add Tuition </button>
+	</button>
+	</form>
+	<table>
+		<thead>
+			<td>Year Level</td>
+			<td>Tuition Fee</td>
+		</thead>
+		<tbody>
+			<?php foreach($fee as $fee)
+				{?>
+				<tr>
+				<td><?php echo $fee->year_level; ?></td>
+				<td><?php echo $fee->fee; ?></td>
+				</tr>
+			
+			<?php }?>
+		</tbody>
+	</table>
 
 </div>
 

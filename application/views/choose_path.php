@@ -22,6 +22,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<form method="post" action="index.php/Users/Home">
 		<button type="submit">Users/Employees </button>
 	</form>
+	<br>
+	<form method="post" action="index.php/Users/Home">
+		<button type="submit">Tuition Fee</button>
+	</form>
 
 </div>
 

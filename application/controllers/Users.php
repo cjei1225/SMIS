@@ -31,6 +31,7 @@ class Users extends CI_Controller {
 	public function Home()
 	{
 		$data['user'] = $this->user->get_users();
+		$data['fee'] = $this->user->get_fee();
 		$this->load->view('users/Users_list', $data);
 	}
 
@@ -85,6 +86,20 @@ class Users extends CI_Controller {
 	public function delete_user()
 	{
 		$this->user->delete_user($this->input->post('user_id'));
+		$this->Home();
+	}
+
+	public function tuition()
+	{
+		$this->load->view('tuition');
+	}
+
+	public function add_tuition()
+	{
+		$this->user->add_tuition(
+			$this->input->post('year_level'),
+			$this->input->post('fee'));
+
 		$this->Home();
 	}
 }
