@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<button type="submit">STUDENTS</button>
 	</form>
 	<br>
-	<form method="post" action="index.php/Classes/Home">
+	<form method="post" action="index.php/Users/Home">
 		<button type="submit">Users/Employees </button>
 	</form>
 
