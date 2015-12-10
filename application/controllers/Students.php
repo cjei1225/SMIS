@@ -83,4 +83,28 @@ class Students extends CI_Controller {
 		$this->student->delete_student($this->input->post('student_id'));
 		$this->Home();
 	}
+
+	public function add_section()
+	{
+		$data['student_details'] = $this->student->get_student_by_id($this->input->post('student_id'));
+		$data['section_list'] = $this->student->get_all_section_year($this->input->post('year_level'));
+
+		$this->load->view('students/add_section', $data);
+	}
+
+	public function submit_section()
+	{
+		$this->student->add_section(
+			$this->input->post('student_id'),
+			$this->input->post('section'));
+
+		$data['student_sec'] = $this->student->get_student_section();
+		$this->load->view('students/student_sec', $data);
+	}
+
+	public function view_student_sec()
+	{
+		$data['student_sec'] = $this->student->get_student_section();
+		$this->load->view('students/student_sec', $data);
+	}
 }

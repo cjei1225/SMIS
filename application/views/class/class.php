@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
     <table class="table table-hover table-bordered table-responsive">
         <thead>
-            
+            <td>Room</td>
             <td>Section</td>
             <td>Year Level</td>
             <td>Capacity</td>
@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php foreach($classrooms as $class)
                 {?>
                 <tr>
-               
+                <td><?php echo $class->room; ?></td>
                 <td><?php echo $class->section; ?></td>
                 <td><?php echo $class->year_level; ?></td>
                 <td><?php echo $class->capacity; ?></td>
