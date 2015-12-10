@@ -31,8 +31,10 @@ class Classes extends CI_Controller {
 	public function Home()
 	{
 		$data['class'] = $this->class_model->get_all_class();
-		//$data['classrooms'] = $this->class_model->get_all_classroom();
+		$data['classrooms'] = $this->class_model->get_all_classroom();
 		$this->load->view('class/class', $data);
+
+
 	}
 
 	public function add_class()
@@ -49,7 +51,7 @@ class Classes extends CI_Controller {
 			$this->input->post('user_id'),
 			$this->input->post('year_level'));
 
-		$this->Home();
+		$this->add_class();
 	}
 
 	public function edit_class()
@@ -83,8 +85,17 @@ class Classes extends CI_Controller {
 
 	public function create_classroom()
 	{
-		$this->class_model->create_classroom($this->input->post('year_level'),
+		$this->class_model->create_classroom(
+			$this->input->post('year_level'),
 			$this->input->post('section'),
 			$this->input->post('capacity'));
+
+		$this->Home();
+	}
+
+	public function delete_classroom()
+	{
+		$this->class_model->delete_classroom($this->input->post('section'));
+		$this->Home();
 	}
 }

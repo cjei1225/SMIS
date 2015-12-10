@@ -72,12 +72,12 @@ class class_model extends CI_Model
 		return TRUE;
 	}
 
-	function get_all_classrooms()
+	function get_all_classroom()
 	{
 		$this->db->select('*');
-		$this->db->from('class_room');
+		$this->db->from('classroom');
 
-		$query = $this->db->query();
+		$query = $this->db->get();
 
 		return $query->result();
 	}
@@ -105,5 +105,13 @@ class class_model extends CI_Model
 			$this->db->update('classroom');
 
 			return TRUE;
+	}
+
+	function delete_classroom($section)
+	{
+		$this->db->where('section', $section);
+		$this->db->delete('classroom');
+
+		return TRUE;
 	}
 }
