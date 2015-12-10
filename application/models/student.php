@@ -25,7 +25,6 @@ class student extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('student');
-
 		$query = $this->db->get();
 
 		return $query->result();
@@ -82,6 +81,41 @@ class student extends CI_Model
 		$this->db->delete('student');
 
 		return TRUE;
+	}
+
+	function add_section($student_id, $section)
+	{
+		$data = array(
+		'student_id' => $student_id,
+		'section' => $section
+		);
+
+		$this->db->insert('student_classroom', $data);
+
+		return TRUE;
+	}
+
+	function get_student_section()
+	{
+		$this->db->select('*');
+		$this->db->from('student_classroom');
+		$this->db->join('student', 'student_classroom.student_id = student.student_id');
+		$this->db->join('classroom', 'student_classroom.section = classroom.section');
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
+	function get_all_section_year($year_level)
+	{
+		$this->db->select('section');
+		$this->db->from('classroom');
+		$this->db->where('year_level', $year_level);
+
+		$query = $this->db->get();
+
+		return $query->result();
 	}
 }
 
