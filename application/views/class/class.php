@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td><?php echo $class->year_level; ?></td>
                 <td><?php echo $class->capacity; ?></td>
                 <td>
-                    <form method='post' action='edit_classroom'>
+                    <form method='post' action='class_schedule_page'>
                         <input type='hidden' name='section' value='<?php echo $class->section; ?>' />
                         <button type='submit'> Edit </button>
                     </form>
@@ -76,6 +76,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <form method='post' action='delete_classroom'>
                         <input type='hidden' name='section' value='<?php echo $class->section; ?>' />
                         <button type='submit'> Delete </button>
+                    </form>
+
+                    <form method='post' action='get_class_with_section'>
+                        <input type='hidden' name='section' value='<?php echo $class->section; ?>' />
+                        <button type='submit'> Open </button>
                     </form>
                 </td>
                 </tr>

@@ -114,4 +114,29 @@ class class_model extends CI_Model
 
 		return TRUE;
 	}
+
+	function create_class_schedule($section, $class_id, $timeslot)
+	{
+		$data = array(
+			'section' => $section ,
+			'class_id' => $class_id ,
+			'time_slot' => $timeslot);
+
+		$this->db->insert('class_schedule', $data);
+
+		return TRUE;
+	}
+
+	function get_class_with_section($section)
+	{
+		$this->db->select('*');
+		$this->db->from('class_schedule');
+		$this->db->join('class', 'class.class_id = class_schedule.class_id');
+		$this->db->where('section', $section);
+		$this->db->order_by('time_slot');
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
 }
