@@ -32,6 +32,8 @@ class Users extends CI_Controller {
 	{
 		$data['user'] = $this->user->get_users();
 		$data['fee'] = $this->user->get_fee();
+		$data['dept'] = $this->user->get_all_dept();
+
 		$this->load->view('users/Users_list', $data);
 	}
 
@@ -99,6 +101,13 @@ class Users extends CI_Controller {
 		$this->user->add_tuition(
 			$this->input->post('year_level'),
 			$this->input->post('fee'));
+
+		$this->Home();
+	}
+
+	public function add_dept()
+	{
+		$this->user->add_dept();
 
 		$this->Home();
 	}

@@ -81,6 +81,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php }?>
 		</tbody>
 	</table>
+	<br>
+	<form method='post' action='add_dept'>
+	<button type="submit"> Add Dept </button>
+	</button>
+	</form>
+	<table>
+		<thead>
+			<td>Department</td>
+		</thead>
+		<tbody>
+			<?php foreach($dept as $dept)
+				{?>
+				<tr>
+				<td><?php echo $dept->name; ?></td>
+				</tr>
+			
+			<?php }?>
+		</tbody>
+	</table>
 
 </div>
 

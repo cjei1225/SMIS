@@ -109,6 +109,25 @@ class user extends CI_Model
 
 		return $query->result();
 	}
+
+	function add_dept()
+	{
+		$data = array(
+		'name' => 'English Dept'
+		);
+
+		$this->db->insert('department', $data);
+		return TRUE;
+	}
+
+	function get_all_dept()
+	{
+		$this->db->select('*');
+		$this->db->from('department');
+		$query = $this->db->get();
+
+		return $query->result();
+	}
 }
 
 /* End of file users.php */
