@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-lg-4">
         </div>
         <div class="col-lg-6">
-            <form method="post" action="submit_class">
+            <form method="post" action="Subject/submit">
                     <fieldset>
                         <legend>Add Class</legend>
                         <div class="form-group">
@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-lg-4">
         </div>
         <div class="col-lg-6">
-            <form method="post" action="create_classroom">
+            <form method="post" action="classroom/create">
                     <fieldset>
                         <legend>Add Classroom</legend>
                         <div class="form-group">

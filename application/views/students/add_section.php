@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Add Section</title>
 </head>
 <body>
-
+qweqwe
 <div id="container" >
 	<form method='post' action='submit_section'>
 		<input type='hidden' value='<?php echo $student_details['0']->student_id; ?>' name='student_id'>

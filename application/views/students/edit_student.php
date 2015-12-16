@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container" >
-	<form method='post' action='submit_edits'>
+	<form method='post' action='Student/edit_submit'>
 		<input type='hidden' value='<?php echo $student_details['0']->student_id; ?>' name='student_id'>
 		<label>First Name: </label><input type="text" name='first_name' value='<?php echo $student_details['0']->first_name;?>' ></input><br>
 		<label>Last Name: </label><input type="text" name='last_name' value='<?php echo $student_details['0']->last_name;?>' ></input><br>

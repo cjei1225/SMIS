@@ -36,7 +36,108 @@ class Classes extends CI_Controller {
 
 
 	}
+
+	public function Subject($part = '')
+	{
+		if($part == 'create')
+		{
+			$data['class'] = $this->user->get_users();
+			$this->load->view('class/add_class', $data);
+		}
+		elseif($part == 'submit')
+		{
+			$this->class_model->add_class(
+			$this->input->post('name'),
+			$this->input->post('description'),
+			$this->input->post('user_id'),
+			$this->input->post('year_level'));
+
+		$this->add_class();
+		}
+		elseif($part == 'edit')
+		{
+			$data['class'] = $this->class_model->get_class_by_id($this->input->post('class_id'));
+			$data['users'] = $this->user->get_users();
+			$this->load->view('class/edit_class', $data);
+		}
+		elseif($part == 'update')
+		{
+			$this->class_model->update_class(
+				$this->input->post('class_id'),
+				$this->input->post('name'),
+				$this->input->post('description'),
+				$this->input->post('user_id'));
+
+			$this->Home();
+		}
+		elseif($part == 'delete')
+		{
+			$this->class_model->delete_class($this->input->post('class_id'));
+			$this->Home();
+		}
+	}
+
+	public function student_class()
+	{
+		$this->class_model->add_student_class($this->input->post('student_id'));
+	}
+	// Class room
+
+	public function classroom($part = '')
+	{
+		if($part == 'create')
+		{
+			$this->class_model->create_classroom(
+				$this->input->post('year_level'),
+				$this->input->post('section'),
+				$this->input->post('capacity'));
+
+			$this->Home();
+		}
+		elseif($part == 'edit')
+		{
+
+		}
+		elseif($part == 'delete')
+		{
+			$this->class_model->delete_classroom($this->input->post('section'));
+			$this->Home();
+		}
+		elseif($part == 'submit_schedule')
+		{
+				$i = 0;
+			foreach($this->input->post('class') as $subject)
+			{
+				$this->class_model->create_class_schedule(
+					$this->input->post('section'), 
+					$subject, 
+					$this->input->post('timeslot')[$i]);
+				//
+				//echo $this->input->post('timeslot')[$i];
+				$i++;
+			} 
+		}
+		elseif($part == 'schedule_me')
+		{
+			$data['subject'] = $this->class_model->get_all_class();
+			$data['section'] = $this->input->post('section');
+			$this->load->view('class/class_schedule', $data);
+		}
+		elseif($part == 'schedule')
+		{
+			$data['class'] = $this->class_model->get_class_with_section($this->input->post('section'));
+			$this->load->view('class/class_has_schedule', $data);
+		}
+	}
+	
+
+	
+	// End Classroom
+
+
+//OLD CODES
 	// Subjects
+	/*)
 	public function add_class()
 	{
 		$data['class'] = $this->user->get_users();
@@ -78,11 +179,8 @@ class Classes extends CI_Controller {
 		$this->Home();
 	}
 	// End Subjects
-	public function student_class()
-	{
-		$this->class_model->add_student_class($this->input->post('student_id'));
-	}
-	// Class room
+
+	// Classroom
 	public function create_classroom()
 	{
 		$this->class_model->create_classroom(
@@ -107,7 +205,8 @@ class Classes extends CI_Controller {
 	}
 	public function create_class_schedule()
 	{
-		$i = 0;
+		
+			$i = 0;
 		foreach($this->input->post('class') as $subject)
 		{
 			$this->class_model->create_class_schedule(
@@ -118,7 +217,6 @@ class Classes extends CI_Controller {
 			//echo $this->input->post('timeslot')[$i];
 			$i++;
 		} 
-
 		
 	}
 
@@ -128,7 +226,5 @@ class Classes extends CI_Controller {
 		
 		$this->load->view('class/class_has_schedule', $data);
 	}
-	// End Classroom
-
-
+	*/
 }

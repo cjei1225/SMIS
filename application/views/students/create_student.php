@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container" >
-	<form method='post' action='submit_student'>
+	<form method='post' action='submit'>
 		<label>First Name: </label><input type="text" name='first_name'></input><br>
 		<label>Last Name: </label><input type="text" name='last_name'></input><br>
 		

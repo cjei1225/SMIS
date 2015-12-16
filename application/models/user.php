@@ -96,8 +96,23 @@ class user extends CI_Model
 		'fee' => $fee
 		);
 
-		$this->db->insert('tuition_fee', $data);
 
+		$this->db->select('year_level');
+		$this->db->from('tuition_fee');
+		$this->db->where('year_level', $year_level);
+
+		$query = $this->db->get();
+
+		if($query->num_rows() ==  0)
+		{
+			$this->db->insert('tuition_fee', $data);
+		}
+		else
+		{
+					$this->db->set($data);
+					$this->db->where('year_level', $year_level);
+					$this->db->update('tuition_fee');
+		}
 		return TRUE;
 	}
 

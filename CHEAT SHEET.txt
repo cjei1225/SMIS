@@ -1,0 +1,24 @@
+Database table
+class
+	- user_id = teacher
+
+
+Getters
+// class_model
+ $this->class_model->get_all_class()
+ $this->class_model->get_class_by_id($class_id)
+ $this->class_model->get_all_classroom()
+ $this->class_model->get_class_with_section($section)
+
+//student
+ $this->student->get_all_section_year($year_level)
+ $this->student->get_student_section()
+ $this->student->get_student_by_id($student_id)
+ $this->student->get_students()
+
+
+//user
+ $this->user->get_fee()
+ $this->user->get_all_dept()
+
+ <?php include(base_url().'application/views/header.php'); ?>
