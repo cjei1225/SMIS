@@ -1,74 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<?php  include($_SERVER['DOCUMENT_ROOT'].'/SMIS/application/views/header.php'); ?>
 	<title>Choose the path you wish to edit</title>
-
-	<style type="text/css">
-    #action_btn
-    {
-        margin-left: 10px;
-       width: 34px;
-       height: 34px;
-       margin-bottom: 5px;
-       background-color: #ded17d;
-       color: #000000;
-       border-radius: 0px;
-      margin-right: 1px;
-      padding-right: 25px;
-    }
-    th, td
-    {
-        width: 100px;
-        text-align: center;
-        margin: 10px;
-
-    }
-    th
-    {
-        background-color: #521812;
-        color: #ffffff;
-        text-align: center;
-    }
-    li{
-        color: black;
-    }
-    table
-    {
-    border-right: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
-
-    }
-
-    .main-menu
-    {
-        top:0;
-        background-color: #521812;
-       color: #000000;
-       position: fixed;
-    }
-    .main-menu>ul.logout
-    {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-
-    }
-    label
-    {
-        width: 150px;
-
-    }
-    #tableline
-    {
-        border: transparent;
-    }
-
-    </style>
 </head>
 <body>
 

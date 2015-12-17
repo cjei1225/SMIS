@@ -10,7 +10,7 @@
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="Home" >
+                    <a href="<?php echo site_url(); ?>/Students/Home" >
                         <i class="fa fa-users fa-2x"></i>
                         <span class="nav-text">
                             Students
@@ -20,7 +20,7 @@
                 </li>
            
                 <li class="has-subnav">
-                    <a href="#" >
+                    <a href="<?php echo site_url(); ?>/Users/Home" >
                        <i class="fa fa-users fa-2x"></i>
                         <span class="nav-text">
                             Teachers
@@ -29,7 +29,7 @@
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="#" onClick="window.location = 'Class/Home';" return false>
+                    <a href="<?php echo site_url(); ?>/Classes/Home">
                        <i class="fa fa-list fa-2x"></i>
                         <span class="nav-text">
                             Class
@@ -41,7 +41,7 @@
             </ul>
    <ul class="logout">
                <li class="has-subnav">
-                    <a href="#" >
+                    <a href="<?php echo site_url(); ?>/Users/tuition">
                        <i class="fa fa-gears fa-2x"></i>
                         <span class="nav-text">
                             Setting
@@ -60,15 +60,3 @@
                 </li>
                 </ul>
             </nav>
-
-            <script type="javascript">
-            function Class()
-            {
-                
-            }
-            function Students()
-            {
-
-            }
-
-            </script>

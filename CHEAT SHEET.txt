@@ -21,4 +21,9 @@ Getters
  $this->user->get_fee()
  $this->user->get_all_dept()
 
- <?php include(base_url().'application/views/header.php'); ?>
+<?php  include($_SERVER['DOCUMENT_ROOT'].'/SMIS/application/views/header.php'); ?>
+<?php  include($_SERVER['DOCUMENT_ROOT'].'/SMIS/application/views/navbar.php'); ?>
+<?php  include($_SERVER['DOCUMENT_ROOT'].'/SMIS/application/views/scripts.php'); ?>
+ roles
+  0 = Admin
+  1 = Teacher

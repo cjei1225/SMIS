@@ -32,16 +32,21 @@ class user extends CI_Model
 		return $query->result();
 	}
 
-	function create_user($first_name, $last_name, $position, $birth_date, $gender, $username, $password, $department)
+	function create_user($first_name, $middle_name, $last_name, $position, $birth_date, $gender, $username, $password, $address, $city, $contact_num, $email, $department)
 	{
 		$data = array(
 		'first_name' => $first_name,
+		'middle_name' => $middle_name,
 		'last_name' => $last_name,
 		'position' => $position,
 		'birthdate' => $birth_date,
 		'gender' => $gender,
 		'username' => $username,
 		'password' => $password,
+		'address' => $address,
+		'city' => $city,
+		'contact_num' => $contact_num,
+		'email' => $email,
 		'department' => $department
 		);
 
@@ -123,6 +128,29 @@ class user extends CI_Model
 		$query = $this->db->get();
 
 		return $query->result();
+	}
+
+	function get_books()
+	{
+		$this->db->select('*');
+		$this->db->from('books');
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
+	function add_book($class_id,$title,$author,$edition,$price)
+	{
+		$data = array(
+			'class_id' => $class_id,
+			'title' => $title,
+			'author' => $author,
+			'edition' => $edition,
+			'price' => $price);
+		$this->db->insert('books', $data);
+
+		return true;
 	}
 
 	function add_dept()

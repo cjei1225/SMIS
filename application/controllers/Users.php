@@ -25,6 +25,7 @@ class Users extends CI_Controller {
 		$this->load->helper(array('form', 'url', 'download'));
 		//$this->load->library('user_library');
 		$this->load->model('user');
+		$this->load->model('class_model');
 		$this->load->database();
 	}
 
@@ -46,12 +47,17 @@ class Users extends CI_Controller {
 	{
 		$this->user->create_user(
 			$this->input->post('first_name'),
+			$this->input->post('middle_name'),
 			$this->input->post('last_name'),
 			$this->input->post('position'),
 			$this->input->post('birth_date'),
 			$this->input->post('gender'),
 			$this->input->post('username'),
 			$this->input->post('password'),
+			$this->input->post('address'),
+			$this->input->post('city'),
+			$this->input->post('contact_num'),
+			$this->input->post('email'),
 			$this->input->post('department'));
 
 		$this->Home();
@@ -87,13 +93,17 @@ class Users extends CI_Controller {
 
 	public function delete_user()
 	{
-		$this->user->delete_user($this->input->post('user_id'));
-		$this->Home();
+		$user_id = $this->uri->segment('3');
+		$this->user->delete_user($user_id);
+		redirect('Users/Home');
 	}
 
 	public function tuition()
 	{
-		$this->load->view('tuition');
+		$data['fee'] = $this->user->get_fee();
+		$data['books'] = $this->user->get_books();
+		$data['subject'] = $this->class_model->get_all_class();
+		$this->load->view('users/settings' ,$data);
 	}
 
 	public function add_tuition()
@@ -105,10 +115,21 @@ class Users extends CI_Controller {
 		$this->Home();
 	}
 
+	public function add_book()
+	{
+		$this->user->add_book($this->input->post('class_id'),
+			$this->input->post('title'),
+			$this->input->post('author'),
+			$this->input->post('edition'),
+			$this->input->post('price'));
+
+		redirect('Users/tuition');
+	}
+
 	public function add_dept()
 	{
 		$this->user->add_dept();
 
-		$this->Home();
+		redirect('Users/Home');
 	}
 }

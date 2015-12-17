@@ -32,6 +32,7 @@ class Classes extends CI_Controller {
 	{
 		$data['class'] = $this->class_model->get_all_class();
 		$data['classrooms'] = $this->class_model->get_all_classroom();
+		$data['users'] = $this->user->get_users();
 		$this->load->view('class/class', $data);
 
 
@@ -52,13 +53,13 @@ class Classes extends CI_Controller {
 			$this->input->post('user_id'),
 			$this->input->post('year_level'));
 
-		$this->add_class();
+			redirect('Classes/Home');
 		}
 		elseif($part == 'edit')
 		{
 			$data['class'] = $this->class_model->get_class_by_id($this->input->post('class_id'));
 			$data['users'] = $this->user->get_users();
-			$this->load->view('class/edit_class', $data);
+			redirect('Classes/Home');
 		}
 		elseif($part == 'update')
 		{
@@ -68,12 +69,13 @@ class Classes extends CI_Controller {
 				$this->input->post('description'),
 				$this->input->post('user_id'));
 
-			$this->Home();
+			redirect('Classes/Home');
 		}
 		elseif($part == 'delete')
 		{
-			$this->class_model->delete_class($this->input->post('class_id'));
-			$this->Home();
+			$class_id = $this->uri->segment('4');
+			$this->class_model->delete_class($class_id);
+			redirect('Classes/Home');
 		}
 	}
 
@@ -92,7 +94,7 @@ class Classes extends CI_Controller {
 				$this->input->post('section'),
 				$this->input->post('capacity'));
 
-			$this->Home();
+			redirect('Classes/Home');
 		}
 		elseif($part == 'edit')
 		{
@@ -101,11 +103,11 @@ class Classes extends CI_Controller {
 		elseif($part == 'delete')
 		{
 			$this->class_model->delete_classroom($this->input->post('section'));
-			$this->Home();
+			redirect('Classes/Home');;
 		}
 		elseif($part == 'submit_schedule')
 		{
-				$i = 0;
+			$i = 0;
 			foreach($this->input->post('class') as $subject)
 			{
 				$this->class_model->create_class_schedule(
