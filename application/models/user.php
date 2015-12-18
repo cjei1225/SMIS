@@ -22,6 +22,25 @@ class user extends CI_Model
 		$this->table_name = $ci->config->item('db_table_prefix', 'tank_auth').$this->table_name;	
 	}
 
+	function login($username, $password)
+	{
+		$this->db->select('username, password');
+		$this->db->from('user');
+		$this->db->where('username', $username);
+		$this->db->where('password', $password);
+
+		$query = $this->db->get();
+
+		if($query->num_rows() == 1)
+		{
+			return true;
+		}
+		elseif($query->num_rows() == 0 )
+		{
+			return false;
+		}
+	}
+
 	function get_users()
 	{
 		$this->db->select('*');
