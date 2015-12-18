@@ -18,8 +18,33 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct()
+	{
+		parent::__construct();
+
+		$this->load->helper(array('form', 'url', 'download'));
+		$this->load->model('class_model');
+		$this->load->model('user');
+		$this->load->database();
+	}
 	public function index()
 	{
-		$this->load->view('Choose_path');
+		$this->load->view('login');
+	}
+
+	public function login()
+	{
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+
+		if($this->user->login($username, $password))
+		{
+			redirect('Classes/Home');
+		}
+		elseif(!$this->user->login($username, $password))
+		{
+			echo 'noo';
+		}
 	}
 }
