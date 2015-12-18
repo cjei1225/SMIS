@@ -47,7 +47,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?php echo $student->year_level; ?></td>
                                 <td>N/a</td>
                                 <td id="action_size"><a href="#" class="btn " value="" id="action_btn"><i class="glyphicon glyphicon-open" data-toggle="modal" data-target="#ViewStudent"></i></a>
-                                    <a hef="#" class="btn " value="Edit" id="action_btn" data-toggle="modal" data-target="#editStudent"><i class="glyphicon glyphicon-pencil" ></i></a>
+                                 
+                                    <span class="btn" id="action_btn" onlick='jQuery("#student_id_v").val("<?php echo $student->student_id; ?>");
+                                        jQuery("#year_level_v").val("<?php echo $student->year_level; ?>");
+                                        jQuery("#fname_v").val("<?php echo $student->first_name; ?>");
+                                        jQuery("#mname_v").val("<?php echo $student->middle_name; ?>");
+                                        jQuery("#lname_v").val("<?php echo $student->last_name; ?>");
+                                        jQuery("#gender_v").val("<?php echo $student->gender; ?>");
+                                        jQuery("#bd_v").val("<?php echo $student->birthdate; ?>");
+                                        jQuery("#add_v").val("<?php echo $student->Address; ?>");
+                                        jQuery("#city_v").val("<?php echo $student->City; ?>");
+                                        jQuery("#fathername_v").val("<?php echo $student->father_name; ?>");
+                                        jQuery("#mothername_v").val("<?php echo $student->mother_name; ?>");
+                                        jQuery("#fathernum_v").val("<?php echo $student->father_num; ?>");
+                                        jQuery("#mothernum_v").val("<?php echo $student->mother_num; ?>");
+                                        jQuery("#mobile_v").val("<?php echo $student->contact_num; ?>");
+                                        jQuery("#email_v").val("<?php echo $student->email; ?>");' data-toggle="modal" data-target="#editStudent" ><i class="glyphicon glyphicon-pencil" ></i></span>
+                               
                                     <a class="btn" href='Student/delete/<?php echo $student->student_id; ?>' id="action_btn"><i class="glyphicon glyphicon-trash"></i></a>
                                 </td>
                             </tr>
@@ -76,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <tbody >
                                         <tr id="tableline">
                                             <td class="col-md-2"><label >Student ID</label></td>
-                                            <td colspan="3"><input type="text" value="00001" class="col-md-12"disabled/></td>
+                                            <td colspan="3"><input type="text" value="00001" class="col-md-12"  disabled/></td>
                                             <td  colspan="8"></td>
                                         </tr>
                                         <tr id="tableline">
@@ -259,13 +275,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <tbody >
                                                 <tr id="tableline">
                                                     <td class="col-md-2"><label >Student ID</label></td>
-                                                    <td colspan="3"><input type="text" value="00001" class="col-md-12"disabled /></td>
+                                                    <td colspan="3"><input type="text" name="student_id" id="student_id_v" value="<?php echo $student->student_id; ?>" class="col-md-12"disabled /></td>
                                                     <td  colspan="8"></td>
                                                 </tr>
                                                 <tr id="tableline">
                                                     <td><label>Level</label></td>
                                                     <td colspan="3" >
-                                                        <select class="col-md-12" >   <option value=""> Select Level </option>
+                                                        <select id="year_level_v" class="col-md-12" >   <option value="<?php echo $student->year_level; ?>"> Select Level </option>
                                                             <option value="Grade 1"> Grade 1 </option>
                                                             <option value="Grade 2"> Grade 2 </option>
                                                             <option value="Grade 3"> Grade 3 </option>
@@ -285,18 +301,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </tr>
                                                 <tr id="tableline">
                                                     <td class="col-md-2"><label>Name:</label></td>
-                                                    <td colspan="3"><input id="first" type="text" placeholder="First" value="Mark" class="col-md-12"><label for="first"></label></label></td>
+                                                    <td colspan="3"><input id="fname_v" type="text" placeholder="First" value="<?php echo $student->first_name; ?>" class="col-md-12"><label for="first"></label></label></td>
 
-                                                    <td colspan="3"><input id="middle" type="text" placeholder="Middle" class="col-md-12" value="Ching"><label for="middle" ></label></td>
+                                                    <td colspan="3"><input id="mname_v" type="text" placeholder="Middle" class="col-md-12" value="<?php echo $student->middle_name; ?>"><label for="middle" ></label></td>
 
-                                                    <td colspan="3"><input id="last" type="text" placeholder="Last" class="col-md-12" value="So"><label for="last" ></label></td>
+                                                    <td colspan="3"><input id="lname_v" type="text" placeholder="Last" class="col-md-12" value="<?php echo $student->last_name; ?>"><label for="last" ></label></td>
                                                 </tr>
                                                 <tr id="tableline">
                                                     <td class="col-md-2"><label>Date of Birth</label></td>
-                                                    <td colspan="3"><input type="text" class="col-md-12" value="2007"></td>
+                                                    <td colspan="3"><input type="text" id="bd_v" class="col-md-12" value="<?php echo $student->birthdate; ?>"></td>
                                                     <td class="col-md-2" colspan="3"> <label>Gender</label></td>
                                                     <td colspan="3">
-                                                        <select class="col-md-12" value="Male">   <option value=""> Select Gender </option>
+                                                        <select class="col-md-12" id="gender_v" value="<?php echo $student->gender; ?>">   <option value=""> Select Gender </option>
                                                             <option value="Male"> Male </option>
                                                             <option value="Female"> Female </option>
 
@@ -305,30 +321,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </tr>
                                                 <tr id="tableline">
                                                     <td class="col-md-2"><label>Address</label></td>
-                                                    <td colspan="7"><input type="text" class="col-md-12" value="2143 Estrada St. Taft Ave,"></td>
+                                                    <td colspan="7"><input type="text" id= "address_v" class="col-md-12" value="<?php echo $student->Address; ?>"></td>
                                                 </tr>
                                                 <tr id="tableline">
                                                     <td class="col-md-2"><label>City</label></td>
-                                                    <td colspan="3"><input type="text" class="col-md-12" value="Manila"></td>
+                                                    <td colspan="3"><input type="text" id="city_v" class="col-md-12" value="<?php echo $student->City; ?>"></td>
                                                     <td  colspan="7"></td>
                                                 </tr>
                                                 <tr id="tableline">
                                                     <td style="width:100px;"><label>Mobile #</label></td>
-                                                    <td  colspan="3"><input type="text" class="col-md-12" value="n/a"></td>
+                                                    <td  colspan="3"><input type="text" id="mobile_v" class="col-md-12" value="<?php echo $student->contact_num; ?>"></td>
                                                     <td><label>Email</label></td>
-                                                    <td colspan="3"><input type="email" class="col-md-12" value="n/a"></td>
+                                                    <td colspan="3"><input type="email" id="email_v" class="col-md-12" value="<?php echo $student->email; ?>"></td>
                                                 </tr>
                                                 <tr id="tableline">
                                                     <td class="col-md-2"><label>Father's Name</label></td>
-                                                    <td colspan="3"><input type="text" class="col-md-12" value="James So"></td>
+                                                    <td colspan="3"><input type="text" id="fathername_v" class="col-md-12" value="<?php echo $student->father_name; ?>"></td>
                                                     <td class="col-md-2"><label>Mobile #</label></td>
-                                                    <td colspan="3"><input type="text" class="col-md-12" value="09175463214"></td>
+                                                    <td colspan="3"><input type="text" id="fathernum_v" class="col-md-12" value="<?php echo $student->father_num; ?>"></td>
                                                 </tr>
                                                 <tr id="tableline">
                                                     <td class="col-md-2"><label>Mother's Name</label></td>
-                                                    <td colspan="3"><input type="text" class="col-md-12" value="Kate Ching So"></td>
+                                                    <td colspan="3"><input type="text" id="mothername_v" class="col-md-12" value="<?php echo $student->mother_name; ?>"></td>
                                                     <td class="col-md-2"><label>Mobile #</label></td>
-                                                    <td colspan="3"><input type="text"class="col-md-12" value="09223654128"></td>
+                                                    <td colspan="3"><input type="text" id="mothernum_v" class="col-md-12" value="<?php echo $student->mother_num; ?>"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
